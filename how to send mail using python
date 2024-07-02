@@ -1,0 +1,16 @@
+import smtplib
+from email.message import EmailMessage
+
+email = EmailMessage()
+email['from'] = 'Senders_name'
+email['to'] = 'senders_email'
+email['subject'] = 'Take care of yourself'
+
+email.set_content('I am here for you, Are you Ok?')
+
+with smtplib.SMTP(host='smtp.gmail.com', port=587) as smtp:
+	smtp.ehlo()
+	smtp.starttls()
+	smtp.login('dummy____gmail____account', 'password_created_using_gmail_app_password ') # email, password
+	smtp.send_message(email)
+	print('Finally done')
